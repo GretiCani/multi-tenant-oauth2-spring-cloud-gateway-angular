@@ -1,0 +1,16 @@
+<button *ngIf="!isLoggedIn" class="btn btn-default" (click)="login()">
+  Login
+</button>
+<button class="btn btn-default" (click)="logoff()">
+  Logout
+</button>
+<button class="btn btn-default" (click)="userData()">
+  user data
+</button>
+<button class="btn btn-default" (click)="getApi()">
+  api
+</button>
+
+<pre>{{user | json}}</pre>
+<div>{{data}}</div>
+<router-outlet></router-outlet>

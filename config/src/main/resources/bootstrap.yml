@@ -1,0 +1,18 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+        bootstrap: true
+    discovery:
+      client:
+        health-indicator:
+          include-description: true
+      enabled: true

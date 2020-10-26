@@ -1,0 +1,23 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: service1
+  cloud:
+    config:
+      uri: http://localhost:9999
+      fail-fast: true
+      retry:
+        multiplier: 1.5
+        max-attempts: 3600
+        initial-interval: 5000
+      name: service1
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:${random.int[1,10000]}
+        serviceName: oauth2-${spring.application.name}
+        healthCheckInterval: 15s
+        enabled: true

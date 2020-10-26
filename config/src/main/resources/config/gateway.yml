@@ -1,0 +1,24 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+#        jwt:
+#          jwk-set-uri: http://localhost:8080/auth/realms/dev/protocol/openid-connect/certs
+        jwt:
+          issuer-uri: http://localhost:8080/auth/realms/tenant_2
+      client:
+        registration:
+          keycloak:
+            client-id: 'resource-server'
+            client-secret: '2fa61382-a77f-4a19-85f7-56f05bd96453'
+            authorizationGrantType: authorization_code
+            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+            scope:
+              - email
+              - profile
+              - openid
+#              - offline_access
+        provider:
+          keycloak:
+            issuerUri: http://localhost:8080/auth/realms/tenant_2
+            user-name-attribute: email
