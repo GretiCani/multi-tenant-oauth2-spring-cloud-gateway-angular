@@ -24,9 +24,9 @@ services:
         DB_PASSWORD: password
         KEYCLOAK_USER: admin
         KEYCLOAK_PASSWORD: admin
-        KEYCLOAK_IMPORT: /tmp/tenant_1.json,/tmp/tenant_2.json -Dkeycloak.profile.feature.upload_scripts=enabled
-      volumes:
-        - "./realms:/tmp"
+#        KEYCLOAK_IMPORT: /tmp/tenant_1.json,/tmp/tenant_2.json -Dkeycloak.profile.feature.upload_scripts=enabled
+#      volumes:
+#        - "./realms:/tmp"
       ports:
         - 8080:8080
       depends_on:

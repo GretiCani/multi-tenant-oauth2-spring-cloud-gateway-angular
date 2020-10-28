@@ -41,7 +41,11 @@ public class GatewayApplication {
 
     @GetMapping
     public Mono<String> getHello(){
-        return Mono.just("hello");
+        Mono<String>  helloTenant = Mono.just("hello :")
+                .flatMap(value -> Mono.subscriberContext()
+                        .map(ctx -> value + ctx.getOrDefault("tenant","unknown")));
+
+        return helloTenant;
     }
     
     
