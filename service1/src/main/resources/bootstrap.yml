@@ -6,7 +6,7 @@ spring:
     name: service1
   cloud:
     config:
-      uri: http://localhost:9999
+      uri: http://system-config:9999
       fail-fast: true
       retry:
         multiplier: 1.5
@@ -14,7 +14,7 @@ spring:
         initial-interval: 5000
       name: service1
     consul:
-      host: localhost
+      host: consul
       port: 8500
       discovery:
         instance-id: ${spring.application.name}:${random.int[1,10000]}

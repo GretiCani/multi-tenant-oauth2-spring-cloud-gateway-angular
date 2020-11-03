@@ -39,6 +39,6 @@
 		<module>service1</module>
 		<module>service2</module>
 		<module>config</module>
-		<module>frontend</module>
+<!--		<module>frontend</module>-->
 	</modules>
 </project>

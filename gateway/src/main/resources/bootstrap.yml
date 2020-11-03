@@ -5,14 +5,14 @@ spring:
     name: gateway
   cloud:
     config:
-      uri: http://localhost:9999
+      uri: http://system-config:9999
       fail-fast: true
       retry:
         max-attempts: 3600
         initial-interval: 5000
         multiplier: 1.5
     consul:
-      host: http://localhost:8500
+      host: http://consul:8500
       port: 8500
       discovery:
         instance-id: ${spring.application.name}:${server.port}

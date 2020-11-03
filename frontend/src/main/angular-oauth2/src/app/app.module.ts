@@ -20,7 +20,7 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
     HttpClientModule,
     OAuthModule.forRoot({
       resourceServer: {
-          allowedUrls: ['http://localhost:8089/'],
+          allowedUrls: ['http://172.17.0.1:8089/'],
           sendAccessToken: true
       }
   })

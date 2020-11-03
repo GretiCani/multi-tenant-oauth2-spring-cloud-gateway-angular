@@ -17,7 +17,7 @@ public class SecurityConfig {
 
 	@Bean
 	JwtIssuerReactiveAuthenticationManagerResolver resolver(){
-		return new JwtIssuerReactiveAuthenticationManagerResolver("http://localhost:8080/auth/realms/tenant_1","http://localhost:8080/auth/realms/tenant_2");
+		return new JwtIssuerReactiveAuthenticationManagerResolver("http://172.17.0.1:8080/auth/realms/tenant_2:8080/auth/realms/tenant_1","http://172.17.0.1:8080/auth/realms/tenant_2");
 	}
 
 

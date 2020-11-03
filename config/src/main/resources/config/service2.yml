@@ -5,7 +5,7 @@ spring:
         #        jwt:
         #          jwk-set-uri: http://localhost:8080/auth/realms/dev/protocol/openid-connect/certs
         jwt:
-          issuer-uri: http://localhost:8080/auth/realms/tenant_2
+          issuer-uri: http://keycloak:8080/auth/realms/tenant_2
       client:
         registration:
           keycloak:
@@ -20,5 +20,5 @@ spring:
         #              - offline_access
         provider:
           keycloak:
-            issuerUri: http://localhost:8080/auth/realms/tenant_2
+            issuerUri: http://keycloak:8080/auth/realms/tenant_2
             user-name-attribute: email

@@ -8,8 +8,7 @@
     "build:prod": "npm run build -- --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "springboot": "ng build --configuration=production --output-path=../../../../gateway/src/main/resources/static"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

@@ -24,9 +24,9 @@ services:
         DB_PASSWORD: password
         KEYCLOAK_USER: admin
         KEYCLOAK_PASSWORD: admin
-#        KEYCLOAK_IMPORT: /tmp/tenant_1.json,/tmp/tenant_2.json -Dkeycloak.profile.feature.upload_scripts=enabled
-#      volumes:
-#        - "./realms:/tmp"
+        KEYCLOAK_IMPORT: /tmp/tenant_1.json,/tmp/tenant_2.json -Dkeycloak.profile.feature.upload_scripts=enabled
+      volumes:
+        - "./realms:/tmp"
       ports:
         - 8080:8080
       depends_on:
@@ -38,4 +38,55 @@ services:
     command: agent -server -bootstrap-expect 1 -ui -data-dir /tmp -client=0.0.0.0
     entrypoint:
       - consul
+
+  system-config:
+    build:
+      context: ./config
+      dockerfile: Dockerfile
+    ports:
+      - 9999:9999
+
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    depends_on:
+      - system-config
+      - consul
+      - keycloak
+    ports:
+      - 8089:8089
+
+  service1:
+    build:
+      context: ./service1
+      dockerfile: Dockerfile
+    depends_on:
+      - gateway
+      - system-config
+      - consul
+      - keycloak
+
+  service2:
+    build:
+      context: ./service2
+      dockerfile: Dockerfile
+    depends_on:
+      - gateway
+      - system-config
+      - consul
+      - keycloak
+
+  frontend:
+    build:
+      context: ./frontend/src/main/angular-oauth2
+      dockerfile: Dockerfile
+    depends_on:
+      - gateway
+      - system-config
+      - consul
+      - keycloak
+    ports:
+      - 4200:80
+
    

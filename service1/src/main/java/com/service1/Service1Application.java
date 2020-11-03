@@ -34,7 +34,7 @@ public class Service1Application {
 	public Mono<String> index(final @AuthenticationPrincipal Jwt jwt,ServerWebExchange exchange) {
 		System.err.println(jwt.getClaimAsString("tenant_id"));
 		 Mono<String> retrievedResource = webClient.get()
-			      .uri("http://localhost:8089/service2/index2")
+			      .uri("http://172.17.0.1:8089/service2/index2")
 			      .header("Authorization", TokenResolver.resolve(exchange))
 			      .retrieve()
 			      .bodyToMono(String.class);

@@ -26,14 +26,15 @@ export class AppComponent {
   }
 
   authConfig: AuthConfig = {
-    issuer: 'http://localhost:8080/auth/realms/tenant_2',
+    issuer: 'http://172.17.0.1:8080/auth/realms/tenant_2',
     redirectUri: window.location.origin + "/",
     clientId: 'angular',
     scope: 'openid profile email offline_access',
     responseType: 'code',
     // at_hash is not present in JWT token
     disableAtHashCheck: true,
-    showDebugInformation: true
+    showDebugInformation: true,
+    requireHttps:false
   }
 
   public login() {
@@ -49,10 +50,10 @@ export class AppComponent {
   }
 
   public getApi(){
-  // this.http.get("http://localhost:8089/api/gateway").subscribe(data=>{
+  // this.http.get("http://keycloak:8089/api/gateway").subscribe(data=>{
   //   this.data = data
   // })
-  this.http.get("http://localhost:8089/service1/index1").subscribe(data=>{
+  this.http.get("http://172.17.0.1:8089/service1/index1").subscribe(data=>{
     this.data = data
   })
   }

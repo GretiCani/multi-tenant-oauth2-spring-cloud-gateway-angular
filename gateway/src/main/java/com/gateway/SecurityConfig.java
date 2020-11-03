@@ -29,7 +29,7 @@ public class SecurityConfig {
 
 	@Bean
 	JwtIssuerReactiveAuthenticationManagerResolver resolver(){
-		return new JwtIssuerReactiveAuthenticationManagerResolver("http://localhost:8080/auth/realms/tenant_1","http://localhost:8080/auth/realms/tenant_2");
+		return new JwtIssuerReactiveAuthenticationManagerResolver("http://172.17.0.1:8080/auth/realms/tenant_2:8080/auth/realms/tenant_1","http://172.17.0.1:8080/auth/realms/tenant_2");
 	}
 
 
@@ -66,8 +66,8 @@ public class SecurityConfig {
 	        .permitAll()
 	        .matchers(EndpointRequest.to("info"))
 	        .permitAll()
-//			.pathMatchers("/**")
-//			.permitAll()
+			.pathMatchers("/*")
+			.permitAll()
 			.anyExchange().authenticated()
 			.and()
             .oauth2Client()
