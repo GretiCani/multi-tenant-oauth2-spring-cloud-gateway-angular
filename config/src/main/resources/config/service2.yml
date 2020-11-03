@@ -17,7 +17,7 @@ spring:
               - email
               - profile
               - openid
-        #              - offline_access
+              - offline_access
         provider:
           keycloak:
             issuerUri: http://keycloak:8080/auth/realms/tenant_2
